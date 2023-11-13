@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from app_general.models import StudentInfo
 
 
 # Create your views here.
@@ -7,4 +7,6 @@ def home(request):
     return render(request, 'app_general/home.html')
 
 def student(request):
-    return render(request, 'app_general/student.html')
+    all_student = StudentInfo.objects.all()
+    context = {'all_student' : all_student}
+    return render(request, 'app_general/student.html', context)

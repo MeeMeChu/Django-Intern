@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >เพิ่มข้อมูลนักศึกษา</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มข้อมูลนักศึกษา</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- ------------form-------------- -->
+
+        <form method="post" action="{% url 'student' %}" class="row g-3">
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">ชื่อ</label>
+            <input type="text" name="firstName" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">นามสกุล</label>
+            <input type="text" name="lastName" class="form-control" required>
+          </div>
+          <div class="col-md-12">
+            <label for="psu_passport" class="form-label">รหัสนักศึกษา</label>
+            <input type="text" name="psu_passport" class="form-control">
+          </div>
+          <div class="col-md-12">
+            <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+            <select class="form-select" id="autoSizingSelect">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </form>
+
+        <!-- ------------------------------- -->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
