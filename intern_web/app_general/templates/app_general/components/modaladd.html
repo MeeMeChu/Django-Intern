@@ -12,26 +12,27 @@
         <!-- ------------form-------------- -->
 
         <form method="post" action="{% url 'student' %}" class="row g-3">
-          <div class="col-md-6">
-            <label for="firstName" class="form-label">ชื่อ</label>
-            <input type="text" name="firstName" class="form-control" required>
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="col-md-6 ">
+            {{ form.firstName.label_tag }}
+            {{ form.firstName }}
+            {{ form.firstName.error }}
           </div>
           <div class="col-md-6">
-            <label for="lastName" class="form-label">นามสกุล</label>
-            <input type="text" name="lastName" class="form-control" required>
+            {{ form.lastName.label_tag }}
+            {{ form.lastName }}
+            {{ form.lastName.error }}
           </div>
           <div class="col-md-12">
-            <label for="psu_passport" class="form-label">รหัสนักศึกษา</label>
-            <input type="text" name="psu_passport" class="form-control">
+            {{ form.psu_passport.label_tag }}
+            {{ form.psu_passport }}
+            {{ form.psu_passport.error }}
           </div>
           <div class="col-md-12">
-            <label class="visually-hidden" for="autoSizingSelect">สาขาวิชา</label>
-            <select class="form-select" id="autoSizingSelect">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+            {{ form.division_set.label_tag }}
+            {{ form.division_set }}
+            {{ form.division_set.error }}
           </div>
         </form>
 
@@ -40,7 +41,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
       </div>
     </div>
   </div>

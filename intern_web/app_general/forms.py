@@ -1,17 +1,18 @@
-from django import forms
+from django import forms 
 from .models import StudentInfo
+from django.forms import TextInput, EmailInput
 
 class DivisionMultipleChoiceField(forms.ModelMultipleChoiceField):
     def label_from_instance(self, obj):
-        return obj.title
+        return obj.division
 
 class StudentModelForm(forms.ModelForm):
     division_set = DivisionMultipleChoiceField(
         queryset = StudentInfo.objects.order_by("-id"),
         required = True,
         label = 'สาขาวิชา',
-        widget = forms.CheckboxSelectMultiple,
-    )
+        widget = forms.SelectMultiple,
+    )   
 
     class Meta:
         model = StudentInfo
@@ -20,5 +21,23 @@ class StudentModelForm(forms.ModelForm):
             'firstName' : 'ชื่อ',
             'lastName' : 'นามสกุล',
             'psu_passport' : 'รหัสนักศึกษา',
-            'division' : 'สาขาวิชา',
+            'division_set' : 'สาขาวิชา',
+        }
+        widgets = {
+            'firstName': TextInput(attrs={
+                'class': "form-control",
+                'placeholder': 'Firstname',
+            }),
+            'lastName': TextInput(attrs={
+                'class': "form-control",
+                'placeholder': 'Lastname',
+            }),
+            'psu_passport': TextInput(attrs={
+                'class': "form-control",
+                'placeholder': 'PSU Passport',
+            }),
+            'division_set': TextInput(attrs={
+                'class': "dropdown-item",
+                'placeholder': 'เลือกสาขาวิชา',
+            }),
         }
