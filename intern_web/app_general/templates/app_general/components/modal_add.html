@@ -1,7 +1,5 @@
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >เพิ่มข้อมูลนักศึกษา</button>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มข้อมูลนักศึกษา</h1>
@@ -9,39 +7,39 @@
       </div>
       <div class="modal-body">
 
-        <!-- ------------form-------------- -->
-
         <form method="post" action="{% url 'student' %}" class="row g-3">
           {% csrf_token %}
-          {{ form.non_field_errors }}
+          {{form.non_field_errors }}
           <div class="col-md-6 ">
             {{ form.firstName.label_tag }}
             {{ form.firstName }}
-            {{ form.firstName.error }}
+            {{ form.firstName.errors }}
           </div>
           <div class="col-md-6">
             {{ form.lastName.label_tag }}
             {{ form.lastName }}
-            {{ form.lastName.error }}
+            {{ form.lastName.errors }}
           </div>
-          <div class="col-md-12">
+          <div class="col-md-6">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+          <div class="col-md-6">
             {{ form.psu_passport.label_tag }}
             {{ form.psu_passport }}
-            {{ form.psu_passport.error }}
+            {{ form.psu_passport.errors }}
           </div>
           <div class="col-md-12">
             {{ form.division_set.label_tag }}
             {{ form.division_set }}
-            {{ form.division_set.error }}
+            {{ form.division_set.errors }}
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" >เพิ่มข้อมูลนักศึกษา</button>
           </div>
         </form>
 
-        <!-- ------------------------------- -->
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
       </div>
     </div>
   </div>
