@@ -1,24 +1,24 @@
 from django import forms 
-from .models import StudentInfo
+from .models import StudentInfo,Division
 from django.forms import TextInput, EmailInput
 
 class DivisionModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
-        return obj.division
+        return obj.name
 
 class StudentModelForm(forms.ModelForm):
     division_set = DivisionModelChoiceField(
-        queryset = StudentInfo.objects.all(),
+        queryset = Division.objects.all(),
         required = True,
         label = 'สาขาวิชา',
-        widget = forms.Select(attrs={
-            'class' : 'form-control',
-        })
+        widget = forms.Select(attrs= {
+                'class' : 'form-select'
+            })
     )   
 
     class Meta:
         model = StudentInfo
-        fields = ['firstName', 'lastName', 'email', 'psu_passport', 'division_set' ]
+        fields = ['firstName', 'lastName', 'email', 'psu_passport' ]
         labels = {
             'firstName' : 'ชื่อ',
             'lastName' : 'นามสกุล',
@@ -41,6 +41,6 @@ class StudentModelForm(forms.ModelForm):
             }),
             'email': EmailInput(attrs={
                 'class': "form-control",
-                'placeholder': 'อีเมล',
+                'placeholder': 'Email',
             }),
         }

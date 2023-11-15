@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from app_general.models import StudentInfo
+from app_general.models import StudentInfo, Division
 from app_general.forms import StudentModelForm
 from django.http import HttpResponseRedirect
 
