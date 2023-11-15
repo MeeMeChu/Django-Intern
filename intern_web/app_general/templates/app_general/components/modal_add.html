@@ -1,40 +1,41 @@
-<div class="modal fade" id="modal_add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_add" tabindex="-1" aria-labelledby="modal_add_header" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มข้อมูลนักศึกษา</h1>
+        <h1 class="modal-title fs-5" id="modal_add_header"><strong>เพิ่มข้อมูลนักศึกษา</strong></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{% url 'student' %}" class="form-floating row g-3">
+        <form method="post" action="{% url 'student' %}" class="row g-3">
           {% csrf_token %}
           {{form.non_field_errors }}
             <div class="col-md-6 ">
-              {{ form.firstName.label_tag }}
+              <label class="form-label">ชื่อ</label>
               {{ form.firstName }}
               {{ form.firstName.errors }}
             </div>
             <div class="col-md-6">
-              {{ form.lastName.label_tag }}
+              <label class="form-label">นามสกุล</label>
               {{ form.lastName }}
               {{ form.lastName.errors }}
             </div>
             <div class="col-md-6">
-              {{ form.email.label_tag }}
+              <label class="form-label">อีเมล</label>
               {{ form.email }}
               {{ form.email.errors }}
             </div>
             <div class="col-md-6">
-              {{ form.psu_passport.label_tag }}
+              <label class="form-label">รหัสนักศึกษา</label>
               {{ form.psu_passport }}
               {{ form.psu_passport.errors }}
             </div>
-            <div class="col-md-12">
-              {{ form.division.label_tag }}
+            <div class="input-group col-md-12">
+              <label class="input-group-text">สาขาวิชา</label>
               {{ form.division }}
               {{ form.division.errors }}
             </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-success" >เพิ่มข้อมูลนักศึกษา</button>
           </div>
         </form>

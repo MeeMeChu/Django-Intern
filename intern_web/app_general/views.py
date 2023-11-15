@@ -8,7 +8,7 @@ from sweetify import sweetify
 def home(request):
     return render(request, 'app_general/home.html')
 
-def student(request):
+def student(request, student_id):
     # #POST FORM 
     if request.method == 'POST':
         #print(request.POST) # 

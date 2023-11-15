@@ -12,20 +12,13 @@ class StudentModelForm(forms.ModelForm):
         required = True,
         label = 'สาขาวิชา',
         widget = forms.Select(attrs= {
-                'class' : 'form-select'
+                'class' : 'form-select',
             })
     )   
 
     class Meta:
         model = StudentInfo
         fields = ['firstName', 'lastName', 'email', 'psu_passport' , 'division']
-        labels = {
-            'firstName' : 'ชื่อ',
-            'lastName' : 'นามสกุล',
-            'email' : 'อีเมล',
-            'psu_passport' : 'รหัสนักศึกษา',
-            'division' : 'สาขาวิชา',
-        }
         widgets = {
             'firstName': TextInput(attrs={
                 'class': "form-control",
@@ -41,6 +34,6 @@ class StudentModelForm(forms.ModelForm):
             }),
             'email': EmailInput(attrs={
                 'class': "form-control",
-                'placeholder': 'Email',
+                'placeholder': '65xxxxxxxx@email.psu.ac.th',
             }),
         }
