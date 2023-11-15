@@ -7,7 +7,7 @@ class DivisionModelChoiceField(forms.ModelChoiceField):
         return obj.name
 
 class StudentModelForm(forms.ModelForm):
-    division_set = DivisionModelChoiceField(
+    division = DivisionModelChoiceField(
         queryset = Division.objects.all(),
         required = True,
         label = 'สาขาวิชา',
@@ -18,13 +18,13 @@ class StudentModelForm(forms.ModelForm):
 
     class Meta:
         model = StudentInfo
-        fields = ['firstName', 'lastName', 'email', 'psu_passport' ]
+        fields = ['firstName', 'lastName', 'email', 'psu_passport' , 'division']
         labels = {
             'firstName' : 'ชื่อ',
             'lastName' : 'นามสกุล',
             'email' : 'อีเมล',
             'psu_passport' : 'รหัสนักศึกษา',
-            'division_set' : 'สาขาวิชา',
+            'division' : 'สาขาวิชา',
         }
         widgets = {
             'firstName': TextInput(attrs={

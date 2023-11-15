@@ -14,6 +14,9 @@ class StudentInfo(models.Model):
     email = models.EmailField(max_length=60, unique=True)
     psu_passport = models.CharField(max_length=60, unique=True )
     registered_at = models.DateTimeField(auto_now_add=True)
-    division = models.ForeignKey('Division', on_delete=models.SET_NULL, null=True)
+    division = models.ForeignKey(Division, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self) -> str:
+        return self.psu_passport
 
     
