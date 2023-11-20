@@ -8,9 +8,10 @@ from sweetify import sweetify
 def home(request):
     return render(request, 'app_general/home.html')
 
-def student(request,):
-    # #POST FORM 
+def student(request):
+    #ADD POST FORM 
     if request.method == 'POST':
+        #print(request.POST) # 
         form = StudentModelForm(request.POST)
         if form.is_valid():
             form.save()
@@ -24,4 +25,11 @@ def student(request,):
     all_student = StudentInfo.objects.all()
     context = { 'all_student' : all_student , 'form' : form}
     return render(request, 'app_general/student.html', context)
+
+def modal_edit(request, student_id):
+    return render(request, 'app_general/components/modal_edit.html')
+
+def modal_delete(request, student_id):
+    pass
+
 
