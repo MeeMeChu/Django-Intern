@@ -1,14 +1,13 @@
-<div class="modal fade" id="modal_add" tabindex="-1" aria-labelledby="modal_add_header" aria-hidden="true">
+<div class="modal fade" {% block modal-id %} id="modal_add" {% endblock %} tabindex="-1" aria-labelledby="modal_add_header" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modal_add_header"><strong>เพิ่มข้อมูลนักศึกษา</strong></h1>
+        <h1 class="modal-title fs-5" id="modal_add_header">{% block modal-title %} <strong>เพิ่มข้อมูลนักศึกษา</strong> {% endblock %}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{% url 'student' %}" class="row g-3">
+        <form method="post" {% block action %} action="{% url 'student' %}" {% endblock %}class="row g-3">
           {% csrf_token %}
-          {{form.non_field_errors }}
             <div class="col-md-6 ">
               <label class="form-label">ชื่อ</label>
               {{ form.firstName }}

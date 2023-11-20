@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from app_general.models import StudentInfo
 from app_general.forms import StudentModelForm
 from django.http import HttpResponseRedirect
@@ -27,7 +27,16 @@ def student(request):
     return render(request, 'app_general/student.html', context)
 
 def modal_edit(request, student_id):
-    return render(request, 'app_general/components/modal_edit.html')
+    student =  StudentInfo.objects.get(id = student_id)
+    form = StudentModelForm(instance=student)
+
+    if request.method == 'POST':
+        form  = StudentModelForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('student')
+    context = {'form' : form }
+    return render(request, 'app_general/student.html', context)
 
 def modal_delete(request, student_id):
     pass
