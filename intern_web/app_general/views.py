@@ -8,10 +8,9 @@ from sweetify import sweetify
 def home(request):
     return render(request, 'app_general/home.html')
 
-def student(request, student_id):
+def student(request,):
     # #POST FORM 
     if request.method == 'POST':
-        #print(request.POST) # 
         form = StudentModelForm(request.POST)
         if form.is_valid():
             form.save()
